@@ -1,0 +1,230 @@
+/* setting some basic styles for every element */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* styling various most occuring tags */
+body {
+    height: 100vh;
+    background: linear-gradient(to bottom, #2980b9, #6dd5fa, #ffffff);
+}
+
+div {
+    display: inline-block;
+}
+
+/* disabling default styling of input and button */
+input, button { 
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+input[type="text"] {
+    width: 100%;
+}
+
+/* styling the drop down menu */
+select {
+    border: none;
+    outline: none;
+    background: none;
+    width: 40%;
+    cursor: pointer;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* styling the main container containing everything */
+main {
+    width: 60%;
+    min-height: 70vh;
+    margin: auto;
+    margin-top: 5vh;
+    padding-top: 10px;
+    background-color: beige;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* two classes I defined to apply as and when required */
+.strike-thru {
+    text-decoration: line-through;
+}
+
+.lighter {
+    opacity: 0.5;
+}
+
+/* styling the app title */
+h1#app-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* styling task description div */
+div#description {
+    width: 100%;
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+    border-color: black;
+    padding: 2px;
+}
+
+div#description:hover, div#category:hover, div#date:hover {
+    background-color: rgb(229, 183, 122);
+}
+
+/* styling other two form fields */
+div#task-info {
+    display: flex;
+}
+
+div#category, div#date {
+    width: 50%;
+    padding: 2px;
+    border-bottom: 1px solid black;
+}
+
+div#category {
+    border-right: 1px solid black;
+}
+
+div#form-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* styling the add task button */
+#form-buttons button {
+    width: 30%;
+    height: 35px;
+    margin-right: 5px;
+    background-color: rgb(30, 160, 43);
+    color: aliceblue;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#form-buttons button i {
+    font-weight: 700;
+}
+
+/* styling the delete tasks button */
+#form-buttons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 30%;
+    height: 35px;
+    margin-left: 5px;
+    background-color: rgb(199, 26, 26);
+    color: aliceblue;
+}
+
+#form-buttons a i {
+    margin-right: 5px;
+}
+
+/* giving left marging to the due tasks span */
+span#due-tasks {
+    margin-left: 5px;
+}
+
+/* styling the task cards */
+div.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 98%;
+    margin: 5px 1%;
+    background-color: azure;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+div.task:hover {
+    background-color: rgb(199, 242, 185);
+}
+
+div.single-task-starter {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+}
+
+div.single-task-starter .fa-check {
+    color: rgb(58, 208, 20);
+    font-size: 1.2rem;
+}
+
+div.single-task-info {
+    width: 90%;
+}
+
+span.single-task-description {
+    font-size: 1.2rem;
+    font-weight: 480;
+}
+
+span.single-task-date {
+    font-size: 0.8rem;
+    color: rgb(62, 60, 60);
+}
+
+i.fa-calendar-days {
+    font-size: 0.70rem;
+    color: rgb(62, 60, 60);
+}
+
+div.single-task-category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    width: 20%;
+    height: 35px;
+    background-color: aquamarine;
+    text-transform: capitalize;
+}
+
+div.checkbox {
+    height: 14px;
+    width: 14px;
+    border: 1px solid black;
+}
+
+
+/* adding responsiveness to app */
+@media screen and (max-width:850px) {
+    main {
+        width: 90%;
+    }
+
+    span.single-task-description {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:620px) {
+    #form-buttons a, #form-buttons button {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:550px) {
+    main {
+        width: 99%;
+    }
+}

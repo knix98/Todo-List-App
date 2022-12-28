@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO APP</title>
+
+    <!-- Font Awesome link -->
+    <script src="https://kit.fontawesome.com/6131559c78.js" crossorigin="anonymous"></script>
+
+    <!-- Google fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS file link -->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    
+    <!-- main content area of our app -->
+    <main>
+
+        <!-- app heading -->
+        <h1 id="app-title">TODO APP</h1>
+
+        <!-- form for getting the details of the task -->
+        <form action="/create-todo" method="POST">
+            <!-- div containing text input for task description -->
+            <div id="description">
+                <label>
+                    <h4>DESCRIPTION</h4>
+                    <input type="text" name="description" placeholder="What needs to be done?" required>
+                </label>
+            </div>
+
+            <div id="task-info">
+                <!-- div containing dropdown menu for category of task -->
+                <div id="category">
+                    <label>
+                        <h4>CATEGORY</h4>
+                        <select name="category" required>
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="business">Business</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </label>
+                </div>
+    
+                <!-- div containing date input for due date of task -->
+                <div id="date">
+                    <label id="date">
+                        <h4>DUE DATE</h4>
+                        <input type="date" name="date" required>
+                    </label>
+                </div>
+            </div>
+
+            <div id="form-buttons">
+                <!-- submit button -->
+                <button type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                    ADD TASK
+                </button>
+
+                <!-- delete tasks button (not part of form though) -->
+                <a href="/delete-todos">
+                    <i class="fa-solid fa-trash-can"></i>
+                    DELETE TASKS
+                </a>
+            </div>
+
+        </form>
+        <!-- end of form -->
+
+        <!-- span showing number of due tasks -->
+        <span id="due-tasks">Due Tasks : <%= due_tasks %></span>
+
+        <!-- using for of loop for adding each new todo dynamically -->
+        <% for(let i of todo_list) { %>
+            <!-- start of one task card -->
+            <div class="task">
+                <div class="single-task-starter">
+
+                    <% if(i.completed == false) { %>
+                        <!-- if task is not completed then empty checkbox will be shown -->
+                        <a href="/toggle-todo/?id=<%= i._id %>">
+                            <div class="checkbox"></div>
+                        </a>
+
+                        <div class="single-task-info">
+                            <span class="single-task-description"><%= i.description %></span> <br>
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span class="single-task-date"><%= i.date %></span>
+                        </div>
+                    <% }else { %>
+                        <!-- if task is marked completed then tick icon will be shown -->
+                        <a href="/toggle-todo/?id=<%= i._id %>">
+                            <i class="fa-solid fa-check"></i>
+                        </a>
+
+                        <!-- if task completed then task description and date will be striked through -->
+                        <div class="single-task-info">
+                            <span class="single-task-description strike-thru lighter"><%= i.description %></span> <br>
+                            <span class="single-task-date strike-thru lighter"><%= i.date %></span>
+                        </div>
+                    <% } %>
+
+                </div>
+
+                <!-- these if else conditions decide the color of the task category div according to it's type -->
+                <% if(i.category == "personal") { %>
+                    <div class="single-task-category" style="background-color:blue;">
+                        <span><%= i.category %></span>
+                    </div>
+                <% }else if(i.category == "work") { %>
+                    <div class="single-task-category" style="background-color:rgb(254, 161, 0);">
+                        <span><%= i.category %></span>
+                    </div>
+                <% }else if(i.category == "business") { %>
+                    <div class="single-task-category" style="background-color:crimson;">
+                        <span><%= i.category %></span>
+                    </div>
+                <% }else if(i.category == "other") { %>
+                    <div class="single-task-category" style="background-color:darkmagenta;">
+                        <span><%= i.category %></span>
+                    </div>
+                <% } %>
+
+            </div>
+            <!-- end of task card -->
+        <% } %>
+        <!-- end of loop running on all the task cards -->
+
+    </main>
+    <!-- end of everything -->
+
+</body>
+</html>
